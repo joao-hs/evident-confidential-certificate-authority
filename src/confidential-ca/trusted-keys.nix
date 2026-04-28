@@ -2,15 +2,15 @@
 let
   keysDir = ./trusted-keys;
   keyFiles = lib.filterAttrs (
-    name: type: type == "regular" && lib.hasSuffix ".asc" name
+    name: type: type == "regular" && lib.hasSuffix ".pub.asc" name
   ) (builtins.readDir keysDir);
-  linkCommands = lib.concatStringsSep "\n" (lib.mapAttrsToList (
-    name: _: "ln -sfn ${keysDir}/${name} \"$out/srv/evident/trusted-keys/${name}\""
-  ) keyFiles);
+  keyLinks = lib.mapAttrsToList (
+    name: _: "L+ /srv/evident/trusted-keys/${name} - - - - ${keysDir}/${name}"
+  ) keyFiles;
 in
 {
-  system.extraSystemBuilderCmds = ''
-    mkdir -p "$out/srv/evident/trusted-keys"
-    ${linkCommands}
-  '';
+  systemd.tmpfiles.rules = [
+    "d /srv/evident 0755 root root -"
+    "d /srv/evident/trusted-keys 0755 root root -"
+  ] ++ keyLinks;
 }
