@@ -6,6 +6,7 @@
   withDebug ? false,
   domain ? "evident-ca.joaohs.com",
   evidentInstancePackage,
+  evidentClientPackage,
   ...
 }:
 let
@@ -29,7 +30,7 @@ in
       ./image.nix
       ./dm-verity.nix
       (import ./evident.nix { inherit inputs evidentInstancePackage; })
-      (import ./confidential-ca/confidential-ca.nix { inherit pkgs domain; })
+      (import ./confidential-ca/confidential-ca.nix { inherit pkgs evidentClientPackage; })
       ./networking.nix
       "${modulesPath}/image/repart.nix"
       "${modulesPath}/system/boot/uki.nix"

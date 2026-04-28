@@ -2,7 +2,7 @@
   description = "Reproducible and Immutable NixOS Images";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=3821d95df71b4b273ddda99a69d1639da86f25b6";
     flake-parts.url = "github:hercules-ci/flake-parts";
     evident-instance = {
       url = "gitlab:dpss-inesc-id/achilles-cvm/dev?dir=instance";
@@ -39,6 +39,7 @@
                 "debug"
               ];
             };
+            evidentClientPackage = inputs.evident-client.packages.x86_64-linux.evident;
             withDebug = true;
           };
           intermediate-ca-ec2 = pkgs.callPackage ./src {
@@ -52,6 +53,7 @@
               ];
               certificateIssuerEndpoint = "root-ca.evident.joaohs.com";
             };
+            evidentClientPackage = inputs.evident-client.packages.x86_64-linux.evident;
             withDebug = true;
           };
           intermediate-ca-gce = pkgs.callPackage ./src {
@@ -65,6 +67,7 @@
               ];
               certificateIssuerEndpoint = "root-ca.evident.joaohs.com";
             };
+            evidentClientPackage = inputs.evident-client.packages.x86_64-linux.evident;
             withDebug = true;
           };
         };

@@ -28,7 +28,7 @@ in
     group = "${username}";
     shell = "${pkgs.shadow}/bin/nologin";
   };
-  users.groups.worker = {};
+  users.groups.ca = {};
 
   systemd.services.confidential-ca = {
     description = "Confidential Certificate Authority";
