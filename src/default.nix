@@ -4,7 +4,6 @@
   lib,
   platform,
   withDebug ? false,
-  domain ? "evident-ca.joaohs.com",
   evidentInstancePackage,
   evidentClientPackage,
   ...

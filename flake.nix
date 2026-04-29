@@ -51,7 +51,7 @@
                 "debug"
                 "request_certificate"
               ];
-              certificateIssuerEndpoint = "root-ca.evident.joaohs.com";
+              certificateIssuerEndpoint = "https://root-ca.evident.joaohs.com:5010";
             };
             evidentClientPackage = inputs.evident-client.packages.x86_64-linux.evident;
             withDebug = true;
@@ -65,7 +65,7 @@
                 "debug"
                 "request_certificate"
               ];
-              certificateIssuerEndpoint = "root-ca.evident.joaohs.com";
+              certificateIssuerEndpoint = "https://root-ca.evident.joaohs.com:5010";
             };
             evidentClientPackage = inputs.evident-client.packages.x86_64-linux.evident;
             withDebug = true;

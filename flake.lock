@@ -9,11 +9,11 @@
       },
       "locked": {
         "dir": "client",
-        "lastModified": 1777387347,
-        "narHash": "sha256-FD9hPpxNkM4cTVXGsxV1P1jXbptpUGlwLQX8OVW36Yc=",
+        "lastModified": 1777447947,
+        "narHash": "sha256-STndLHRwFVkSbtr3Xc0rVeQLc95I99tCCDzaT/B1zYA=",
         "owner": "dpss-inesc-id",
         "repo": "achilles-cvm",
-        "rev": "6d82933a5c77e607029f17088de09a4dd851d457",
+        "rev": "d9c8f280f1a4d667e759998cbda7b4afa910fd1d",
         "type": "gitlab"
       },
       "original": {
@@ -33,11 +33,11 @@
       },
       "locked": {
         "dir": "instance",
-        "lastModified": 1777387347,
-        "narHash": "sha256-FD9hPpxNkM4cTVXGsxV1P1jXbptpUGlwLQX8OVW36Yc=",
+        "lastModified": 1777447947,
+        "narHash": "sha256-STndLHRwFVkSbtr3Xc0rVeQLc95I99tCCDzaT/B1zYA=",
         "owner": "dpss-inesc-id",
         "repo": "achilles-cvm",
-        "rev": "6d82933a5c77e607029f17088de09a4dd851d457",
+        "rev": "d9c8f280f1a4d667e759998cbda7b4afa910fd1d",
         "type": "gitlab"
       },
       "original": {

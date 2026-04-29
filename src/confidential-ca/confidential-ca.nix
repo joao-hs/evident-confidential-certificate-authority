@@ -4,8 +4,7 @@
   ...
 }:
 let
-  username="ca";
-  port="5010";
+  port=5010;
 
   grpcCert="/etc/evident/pki/grpc/public/grpc.crt.pem";
   grpcKey="/etc/evident/pki/grpc/private/grpc.key.pem";
@@ -20,25 +19,18 @@ let
       cert=${selfSignedCert}
     fi
 
-    exec ${evidentClientPackage}/bin/evident serve-certify ${port} ${"$"}cert ${instanceKey} ${grpcCert} ${grpcKey}
+    exec ${evidentClientPackage}/bin/evident serve-certify "${builtins.toString port}" ${"$"}cert ${instanceKey} ${grpcCert} ${grpcKey}
   '';
 in
 {
-  imports = [ ./trusted-keys.nix ];
-  users.users.${username} = {
-    createHome = false;
-    isSystemUser = true;
-    group = "${username}";
-    shell = "${pkgs.shadow}/bin/nologin";
-  };
-  users.groups.${username} = {};
-
   systemd.tmpfiles.rules = [
-    "d /var/lib/evident 0755 root ${username} -"
-    "d /var/lib/evident/${username} 0755 ${username} ${username} -"
-    "d /var/lib/evident/${username}/gnupg 0700 ${username} ${username} -"
-    "d /var/lib/evident/keyring 0770 root ${username} -"
+    "d /var/lib/evident 0755 root root -"
+    "d /var/lib/evident/pwd 0755 root root -"
   ];
+
+  environment.etc."evident/trusted-keys" = {
+    source = ./trusted-keys;
+  };
 
   systemd.services.confidential-ca = {
     description = "Confidential Certificate Authority";
@@ -49,8 +41,8 @@ in
     serviceConfig = {
       Type = "simple";
       ExecStart = "${startScript}";
-      WorkingDirectory = "/var/lib/evident/${username}";
-      User = "${username}";
+      WorkingDirectory = "/var/lib/evident/pwd";
+      User = "root";
       Restart = "on-failure";
       RestartSec = "5s";
       TimeoutStartSec = "0";
