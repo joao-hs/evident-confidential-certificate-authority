@@ -4,8 +4,6 @@
   ...
 }:
 let
-  port=5010;
-
   grpcCert="/etc/evident/pki/grpc/public/grpc.crt.pem";
   grpcKey="/etc/evident/pki/grpc/private/grpc.key.pem";
   selfSignedCert="/etc/evident/pki/instance/public/instance-root.crt.pem";
@@ -19,7 +17,7 @@ let
       cert=${selfSignedCert}
     fi
 
-    exec ${evidentClientPackage}/bin/evident serve-certify "${builtins.toString port}" ${"$"}cert ${instanceKey} ${grpcCert} ${grpcKey}
+    exec ${evidentClientPackage}/bin/evident serve-certify ${"$"}cert ${instanceKey} --grpc-cert ${grpcCert} --grpc-key ${grpcKey}
   '';
 in
 {
@@ -50,6 +48,6 @@ in
   };
 
   networking.firewall.allowedTCPPorts = [
-    port
+    5010
   ];
 }

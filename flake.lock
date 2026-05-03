@@ -24,16 +24,18 @@
     },
     "evident-instance": {
       "inputs": {
-        "nixpkgs": ["nixpkgs"],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
         "rust-overlay": "rust-overlay"
       },
       "locked": {
         "dir": "instance",
-        "lastModified": 1777713676,
-        "narHash": "sha256-VyfRxqnoio5gf838tBYe8as6v77kgbq8ihwgffcw+p4=",
+        "lastModified": 1777735346,
+        "narHash": "sha256-iWJytHOWqWtHm5FRsZ5ryCuaIDYrRVylP/W+lGjl98w=",
         "owner": "dpss-inesc-id",
         "repo": "achilles-cvm",
-        "rev": "2c22cf87d53ed93e9a7ccc1845f18735e8f2f2d2",
+        "rev": "8141069c0cb82d728a4b674ba73e03f53130a9bf",
         "type": "gitlab"
       },
       "original": {
@@ -137,7 +139,10 @@
     },
     "rust-overlay": {
       "inputs": {
-        "nixpkgs": ["evident-instance", "nixpkgs"]
+        "nixpkgs": [
+          "evident-instance",
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1773716879,
